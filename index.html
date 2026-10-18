@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Dr. Harsh Oza | Postdoctoral Fellow</title>
   
   <!-- Claude-inspired typography: Newsreader & Inter -->
@@ -28,33 +28,49 @@
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      -webkit-tap-highlight-color: rgba(201, 100, 66, 0.15);
+    }
+
+    html { 
+      scroll-behavior: smooth; 
+      overflow-x: hidden;
+    }
+
     body {
       font-family: var(--font-sans);
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      width: 100%;
     }
 
     /* Navigation */
     nav {
       position: sticky;
       top: 0;
-      background: rgba(251, 249, 245, 0.94);
-      backdrop-filter: blur(10px);
+      background: rgba(251, 249, 245, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
+      width: 100%;
     }
+
     .nav-container {
       max-width: 880px;
       margin: 0 auto;
-      padding: 0.95rem 1.5rem;
+      padding: 0.85rem 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     .brand {
       font-family: var(--font-serif);
       font-size: 1.25rem;
@@ -62,112 +78,165 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.01em;
+      white-space: nowrap;
       transition: color 0.15s ease;
     }
+
     .brand:hover {
       color: var(--terracotta);
     }
+
     .nav-links {
       display: flex;
-      gap: 1.4rem;
+      gap: 1.3rem;
       list-style: none;
+      align-items: center;
     }
+
     .nav-links a {
       text-decoration: none;
       color: var(--text-muted);
       font-size: 0.9rem;
       font-weight: 450;
       transition: all 0.15s ease;
-      padding: 0.2rem 0;
+      white-space: nowrap;
+      padding: 0.25rem 0;
     }
+
     .nav-links a:hover {
       color: var(--terracotta);
     }
 
+    /* Mobile Navigation Bar */
+    @media (max-width: 680px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        padding: 0.75rem 1rem;
+      }
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+        gap: 1.1rem;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-links a {
+        font-size: 0.88rem;
+      }
+    }
+
+    /* Main Container */
     .container {
       max-width: 880px;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      padding: 2.25rem 1.25rem 4rem;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1.5rem 1rem 3rem;
+      }
     }
 
     /* Hero Section */
     .hero {
       display: flex;
       flex-direction: column-reverse;
-      gap: 2rem;
-      margin-bottom: 3.5rem;
-      padding-bottom: 3rem;
+      gap: 1.75rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
       border-bottom: 1px solid var(--border);
     }
+
     @media (min-width: 680px) {
       .hero {
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
+        margin-bottom: 3.5rem;
+        padding-bottom: 3rem;
       }
     }
+
     .hero-content {
       flex: 1;
     }
+
     .hero-eyebrow {
       display: inline-block;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 500;
       color: var(--terracotta);
       background: var(--terracotta-light);
       border: 1px solid var(--terracotta-border);
       padding: 0.2rem 0.65rem;
       border-radius: 999px;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.75rem;
     }
+
     .hero-name {
       font-family: var(--font-serif);
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 5.5vw, 2.5rem);
       font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 1.15;
       margin-bottom: 0.4rem;
     }
+
     .hero-subtitle {
-      font-size: 1.05rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
       color: var(--text-muted);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
+      line-height: 1.45;
     }
+
     .hero-bio {
-      font-size: 0.98rem;
+      font-size: clamp(0.92rem, 2.4vw, 0.98rem);
       color: var(--text);
       line-height: 1.7;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
+
     .hero-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.8rem;
+      gap: 0.55rem;
+      margin-bottom: 1.75rem;
     }
+
     .pill-link {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      min-height: 38px;
       background: var(--card-bg);
       border: 1px solid var(--border);
       color: var(--text);
       text-decoration: none;
       font-size: 0.84rem;
       font-weight: 500;
-      padding: 0.4rem 0.9rem;
+      padding: 0.45rem 0.9rem;
       border-radius: 6px;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .pill-link:hover {
+
+    .pill-link:hover, .pill-link:active {
       border-color: var(--terracotta);
       color: var(--terracotta);
       background: #FFFFFF;
       transform: translateY(-1px);
       box-shadow: 0 3px 8px rgba(201, 100, 66, 0.1);
     }
+
     .profile-photo {
-      width: 145px;
-      height: 145px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #FFFFFF;
@@ -175,33 +244,50 @@
       flex-shrink: 0;
     }
 
+    @media (max-width: 680px) {
+      .profile-photo {
+        width: 110px;
+        height: 110px;
+      }
+    }
+
     /* Metric Badges */
     .metrics {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 0.85rem;
+      gap: 0.75rem;
     }
+
+    @media (max-width: 580px) {
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     .metric-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 0.9rem 1rem;
+      padding: 0.85rem 0.9rem;
       text-align: center;
       transition: border-color 0.15s ease;
     }
+
     .metric-card:hover {
       border-color: #D6CBC0;
     }
+
     .metric-value {
       font-family: var(--font-serif);
-      font-size: 1.75rem;
+      font-size: clamp(1.5rem, 4vw, 1.75rem);
       font-weight: 600;
       color: var(--terracotta);
       line-height: 1;
       margin-bottom: 0.3rem;
     }
+
     .metric-label {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--text-muted);
@@ -209,19 +295,21 @@
 
     /* Section Headings */
     section {
-      margin-bottom: 3.5rem;
+      margin-bottom: 3.25rem;
     }
+
     .section-header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       border-bottom: 1px solid var(--border);
       padding-bottom: 0.6rem;
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.4rem;
     }
+
     .section-title {
       font-family: var(--font-serif);
-      font-size: 1.45rem;
+      font-size: clamp(1.25rem, 3.5vw, 1.45rem);
       font-weight: 600;
       letter-spacing: -0.01em;
       color: var(--text);
@@ -233,23 +321,33 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
     }
+
+    @media (max-width: 480px) {
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .focus-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.25rem;
+      padding: 1.2rem;
       transition: all 0.2s ease;
     }
+
     .focus-card:hover {
       border-color: #D6CBC0;
       transform: translateY(-1px);
     }
+
     .focus-card h3 {
       font-family: var(--font-serif);
       font-size: 1.15rem;
       margin-bottom: 0.45rem;
       color: var(--text);
     }
+
     .focus-card p {
       font-size: 0.88rem;
       color: var(--text-muted);
@@ -260,53 +358,68 @@
     .timeline {
       display: flex;
       flex-direction: column;
-      gap: 1.6rem;
+      gap: 1.4rem;
     }
+
     .timeline-item {
       display: flex;
       flex-direction: column;
       gap: 0.3rem;
     }
+
     @media (min-width: 600px) {
       .timeline-item {
         flex-direction: row;
         gap: 1.5rem;
       }
     }
+
     .timeline-dates {
-      width: 125px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--terracotta);
       flex-shrink: 0;
       padding-top: 0.15rem;
     }
+
+    @media (min-width: 600px) {
+      .timeline-dates {
+        width: 125px;
+      }
+    }
+
     .timeline-body {
       flex: 1;
     }
+
     .timeline-title {
       font-size: 1rem;
       font-weight: 600;
       color: var(--text);
     }
+
     .timeline-place {
       font-size: 0.88rem;
       color: var(--text-muted);
       margin-bottom: 0.35rem;
+      line-height: 1.45;
     }
+
     .timeline-desc {
       font-size: 0.88rem;
       color: var(--text);
       line-height: 1.6;
+      overflow-wrap: anywhere;
     }
 
     /* Publication Filters */
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
+      gap: 0.45rem;
+      margin-bottom: 1.4rem;
     }
+
     .filter-btn {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -314,16 +427,18 @@
       font-family: var(--font-sans);
       font-size: 0.82rem;
       font-weight: 500;
-      padding: 0.4rem 0.85rem;
+      padding: 0.45rem 0.85rem;
+      min-height: 36px;
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .filter-btn:hover {
+
+    .filter-btn:hover, .filter-btn:active {
       border-color: var(--terracotta);
       color: var(--terracotta);
-      transform: translateY(-1px);
     }
+
     .filter-btn.active {
       background: var(--terracotta-light);
       border-color: var(--terracotta-border);
@@ -336,63 +451,76 @@
     .pub-list {
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
+      gap: 1rem;
     }
+
     .pub-item {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.15rem 1.25rem;
+      padding: 1.1rem 1.15rem;
       display: flex;
-      gap: 1rem;
+      gap: 0.85rem;
       text-decoration: none;
       color: inherit;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+      overflow-wrap: anywhere;
     }
+
     .pub-item.clickable {
       cursor: pointer;
     }
-    .pub-item.clickable:hover {
+
+    .pub-item.clickable:hover, .pub-item.clickable:active {
       border-color: var(--terracotta);
       background: #FFFFFF;
       transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(201, 100, 66, 0.1);
     }
+
     .pub-item.clickable:hover .pub-title {
       color: var(--terracotta);
     }
+
     .pub-item.hidden {
       display: none;
     }
+
     .pub-num {
       font-family: var(--font-serif);
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--terracotta);
       font-weight: 600;
-      width: 24px;
+      width: 22px;
       flex-shrink: 0;
       padding-top: 0.1rem;
     }
+
     .pub-details {
       flex: 1;
       font-size: 0.92rem;
       line-height: 1.55;
     }
+
     .pub-title {
       color: var(--text);
       font-weight: 550;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.3rem;
       transition: color 0.15s ease;
+      line-height: 1.45;
     }
+
     .pub-authors {
       color: var(--text-muted);
       font-size: 0.86rem;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.3rem;
     }
+
     .pub-authors strong {
       color: var(--text);
     }
+
     .pub-meta {
       font-size: 0.82rem;
       color: var(--text-muted);
@@ -400,8 +528,9 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 0.5rem;
-      margin-top: 0.4rem;
+      margin-top: 0.45rem;
     }
+
     .badge {
       display: inline-block;
       font-size: 0.72rem;
@@ -412,34 +541,57 @@
       border: 1px solid var(--border);
       color: var(--text-muted);
     }
+
     .badge.highlight {
       background: var(--terracotta-light);
       border-color: var(--terracotta-border);
       color: var(--terracotta);
     }
+
     .pub-link-icon {
       font-size: 0.8rem;
       color: var(--terracotta);
       margin-left: auto;
       font-weight: 500;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 480px) {
+      .pub-meta {
+        justify-content: flex-start;
+      }
+      .pub-link-icon {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 0.2rem;
+      }
     }
 
     /* Skills Grid */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
+      gap: 1.15rem;
     }
+
+    @media (max-width: 480px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .skill-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.25rem;
+      padding: 1.15rem;
       transition: border-color 0.15s ease;
     }
+
     .skill-card:hover {
       border-color: #D6CBC0;
     }
+
     .skill-card h3 {
       font-family: var(--font-serif);
       font-size: 1.1rem;
@@ -447,20 +599,23 @@
       margin-bottom: 0.75rem;
       color: var(--text);
     }
+
     .tag-cloud {
       display: flex;
       flex-wrap: wrap;
       gap: 0.45rem;
     }
+
     .tag {
       background: var(--card-subtle);
       border: 1px solid var(--border);
-      padding: 0.3rem 0.7rem;
+      padding: 0.35rem 0.7rem;
       border-radius: 6px;
       font-size: 0.82rem;
       color: var(--text);
       transition: all 0.15s ease;
     }
+
     .tag:hover {
       border-color: var(--terracotta-border);
       color: var(--terracotta);
@@ -470,41 +625,62 @@
     .honours-list {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.9rem;
     }
+
     .honour-item {
       display: flex;
-      gap: 1.25rem;
+      flex-direction: column;
+      gap: 0.4rem;
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1rem 1.25rem;
+      padding: 1rem 1.15rem;
       transition: border-color 0.15s ease;
     }
+
+    @media (min-width: 580px) {
+      .honour-item {
+        flex-direction: row;
+        gap: 1.25rem;
+        align-items: flex-start;
+      }
+    }
+
     .honour-item:hover {
       border-color: #D6CBC0;
     }
+
     .honour-year {
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--terracotta);
-      width: 80px;
       flex-shrink: 0;
     }
+
+    @media (min-width: 580px) {
+      .honour-year {
+        width: 85px;
+      }
+    }
+
     .honour-content h4 {
       font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.2rem;
+      line-height: 1.4;
     }
+
     .honour-content p {
       font-size: 0.85rem;
       color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
-      padding: 2.5rem 0 1rem;
+      padding: 2.25rem 0 1rem;
       text-align: center;
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -513,7 +689,7 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Responsive Navigation -->
   <nav>
     <div class="nav-container">
       <a href="#home" class="brand">Dr. Harsh Oza</a>
@@ -536,16 +712,16 @@
         <span class="hero-eyebrow">Postdoctoral Fellow</span>
         <h1 class="hero-name">Harsh Oza, Ph.D.</h1>
         <div class="hero-subtitle">
-          Department of Geosciences · National Taiwan University
+          Department of Geosciences · National Taiwan University[cite: 1]
         </div>
         <p class="hero-bio">
-          Earth Science researcher with 10 years of experience in isotope hydrology and climate dynamics. 
+          Earth Science researcher with 10 years of experience in isotope hydrology and climate dynamics[cite: 1]. 
           My research combines analytical measurement and interpretation of water stable isotopes 
           (&delta;<sup>18</sup>O, &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H) to investigate hydrometeorological processes, 
-          continental moisture transport, Asian monsoon variability, and coastal groundwater dynamics.
+          continental moisture transport, Asian monsoon variability, and coastal groundwater dynamics[cite: 1, 2].
         </p>
 
-        <!-- Interactive Header Buttons -->
+        <!-- Touch-Friendly Interactive Links -->
         <div class="hero-links">
           <a href="mailto:harshoza85@gmail.com" class="pill-link">Email</a>
           <a href="https://scholar.google.com/citations?user=GUsSfJEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="pill-link">Google Scholar</a>
@@ -586,19 +762,19 @@
       <div class="focus-grid">
         <div class="focus-card">
           <h3>Isotope Hydrometeorology</h3>
-          <p>Analyzing stable isotope (&delta;<sup>18</sup>O, &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H) systematics in daily and event-based precipitation to identify moisture sources, sub-cloud evaporation, convective regimes, and orographic influences across Asia.</p>
+          <p>Analyzing stable isotope (&delta;<sup>18</sup>O, &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H) systematics in daily and event-based precipitation to identify moisture sources, sub-cloud evaporation, convective regimes, and orographic influences across Asia[cite: 1, 2].</p>
         </div>
         <div class="focus-card">
           <h3>Coastal Hydrogeology</h3>
-          <p>Quantifying submarine groundwater discharge (SGD), salinity sources, and surface water–groundwater interactions along coastal aquifer systems using environmental isotopes and hydrochemical tracers.</p>
+          <p>Quantifying submarine groundwater discharge (SGD), salinity sources, and surface water–groundwater interactions along coastal aquifer systems using environmental isotopes and hydrochemical tracers[cite: 1].</p>
         </div>
         <div class="focus-card">
           <h3>Monsoon &amp; Climate Dynamics</h3>
-          <p>Linking multidecadal precipitation isotope trends with atmospheric reanalysis fields to study summer monsoon rainfall variability, trend reversals, and large-scale ocean-atmosphere reorganization.</p>
+          <p>Linking multidecadal precipitation isotope trends with atmospheric reanalysis fields to study summer monsoon rainfall variability, trend reversals, and large-scale ocean-atmosphere reorganization[cite: 6, 7].</p>
         </div>
         <div class="focus-card">
           <h3>Vapor Phase &amp; Kinetic Fractionation</h3>
-          <p>Studying ground-level water vapor dynamics, kinetic fractionation during supersaturated condensation, and recycled moisture contributions across tropical and high-altitude mountain regimes.</p>
+          <p>Studying ground-level water vapor dynamics, kinetic fractionation during supersaturated condensation, and recycled moisture contributions across tropical and high-altitude mountain regimes[cite: 2, 6, 7].</p>
         </div>
       </div>
     </section>
@@ -612,10 +788,10 @@
         <div class="timeline-item">
           <div class="timeline-dates">2025 – Present</div>
           <div class="timeline-body">
-            <div class="timeline-title">Postdoctoral Fellow · with Prof. Ya-Hsuan Liou</div>
-            <div class="timeline-place">Department of Geosciences, National Taiwan University, Taiwan</div>
+            <div class="timeline-title">Postdoctoral Fellow · with Prof. Ya-Hsuan Liou[cite: 1]</div>
+            <div class="timeline-place">Department of Geosciences, National Taiwan University, Taiwan[cite: 1]</div>
             <div class="timeline-desc">
-              Directing multi-site coastal groundwater and surface water sampling campaigns; applying isotope and hydrochemical frameworks to quantify coastal salinity sources and submarine groundwater discharge.
+              Directing multi-site coastal groundwater and surface water sampling campaigns; applying isotope and hydrochemical frameworks to quantify coastal salinity sources and submarine groundwater discharge[cite: 1].
             </div>
           </div>
         </div>
@@ -623,10 +799,10 @@
         <div class="timeline-item">
           <div class="timeline-dates">2023 – 2025</div>
           <div class="timeline-body">
-            <div class="timeline-title">Postdoctoral Fellow · with Prof. Ludvig Löwemark</div>
-            <div class="timeline-place">Department of Geosciences, National Taiwan University, Taiwan</div>
+            <div class="timeline-title">Postdoctoral Fellow · with Prof. Ludvig Löwemark[cite: 1]</div>
+            <div class="timeline-place">Department of Geosciences, National Taiwan University, Taiwan[cite: 1]</div>
             <div class="timeline-desc">
-              Analyzed multi-year precipitation isotope records (&delta;<sup>18</sup>O, &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H) across Southeast Asia and the Malaya Peninsula, evaluating synoptic hydrometeorological controls.
+              Analyzed multi-year precipitation isotope records (&delta;<sup>18</sup>O, &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H) across Southeast Asia and the Malaya Peninsula, evaluating synoptic hydrometeorological controls[cite: 1, 5].
             </div>
           </div>
         </div>
@@ -634,10 +810,10 @@
         <div class="timeline-item">
           <div class="timeline-dates">2022 – 2023</div>
           <div class="timeline-body">
-            <div class="timeline-title">Postdoctoral Fellow · with Dr. Mao-Chang Liang</div>
-            <div class="timeline-place">Institute of Earth Sciences, Academia Sinica, Taiwan</div>
+            <div class="timeline-title">Postdoctoral Fellow · with Dr. Mao-Chang Liang[cite: 1, 2]</div>
+            <div class="timeline-place">Institute of Earth Sciences, Academia Sinica, Taiwan[cite: 2]</div>
             <div class="timeline-desc">
-              Conducted CRDS water vapor isotopic sampling and investigated multi-year isotopic variations in East Asian precipitation and surface water reservoirs.
+              Conducted CRDS water vapor isotopic sampling and investigated multi-year isotopic variations in East Asian precipitation and surface water reservoirs[cite: 2, 5].
             </div>
           </div>
         </div>
@@ -645,10 +821,10 @@
         <div class="timeline-item">
           <div class="timeline-dates">2020 – 2022</div>
           <div class="timeline-body">
-            <div class="timeline-title">Postdoctoral Fellow · with Prof. R. D. Deshpande</div>
-            <div class="timeline-place">Geosciences Division, Physical Research Laboratory (PRL), India</div>
+            <div class="timeline-title">Postdoctoral Fellow · with Prof. R. D. Deshpande[cite: 2]</div>
+            <div class="timeline-place">Geosciences Division, Physical Research Laboratory (PRL), India[cite: 2]</div>
             <div class="timeline-desc">
-              Established and managed a CRDS laboratory for liquid and vapor triple oxygen and hydrogen isotopes; evaluated Western Himalayan precipitation and paleoclimate dynamics.
+              Established and managed a CRDS laboratory for liquid and vapor triple oxygen and hydrogen isotopes; evaluated Western Himalayan precipitation and paleoclimate dynamics[cite: 2].
             </div>
           </div>
         </div>
@@ -656,10 +832,10 @@
         <div class="timeline-item">
           <div class="timeline-dates">2015 – 2020</div>
           <div class="timeline-body">
-            <div class="timeline-title">Graduate Research Fellow</div>
-            <div class="timeline-place">Physical Research Laboratory &amp; IIT Gandhinagar, India</div>
+            <div class="timeline-title">Graduate Research Fellow[cite: 2, 3]</div>
+            <div class="timeline-place">Physical Research Laboratory &amp; IIT Gandhinagar, India[cite: 1, 2]</div>
             <div class="timeline-desc">
-              Conducted nationwide doctoral investigation spanning 41 isotope stations across India to identify synoptic and local controls on precipitation isotopic composition.
+              Conducted nationwide doctoral investigation spanning 41 isotope stations across India to identify synoptic and local controls on precipitation isotopic composition[cite: 2].
             </div>
           </div>
         </div>
@@ -675,31 +851,31 @@
         <div class="timeline-item">
           <div class="timeline-dates">2020</div>
           <div class="timeline-body">
-            <div class="timeline-title">Ph.D. in Earth Sciences</div>
-            <div class="timeline-place">Indian Institute of Technology Gandhinagar, India</div>
+            <div class="timeline-title">Ph.D. in Earth Sciences[cite: 1]</div>
+            <div class="timeline-place">Indian Institute of Technology Gandhinagar, India[cite: 1]</div>
             <div class="timeline-desc">
-              <em>Thesis:</em> <a href="https://drive.google.com/file/d/1iJ8FKrtXyirTnD7yPCROLdigG8CKagv6/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--terracotta); text-decoration: underline;">Understanding hydrometeorological processes concerning Indian precipitation: insights from oxygen and hydrogen stable isotopes in conjunction with meteorological parameters</a> (Advised by Prof. R. D. Deshpande).
+              <em>Thesis:</em> <a href="https://drive.google.com/file/d/1iJ8FKrtXyirTnD7yPCROLdigG8CKagv6/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--terracotta); text-decoration: underline;">Understanding hydrometeorological processes concerning Indian precipitation: insights from oxygen and hydrogen stable isotopes in conjunction with meteorological parameters</a> (Advised by Prof. R. D. Deshpande)[cite: 2, 7].
             </div>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dates">2015</div>
           <div class="timeline-body">
-            <div class="timeline-title">M.Sc. in Earth Sciences</div>
-            <div class="timeline-place">Sardar Patel University, Vallabh Vidyanagar, India</div>
+            <div class="timeline-title">M.Sc. in Earth Sciences[cite: 1]</div>
+            <div class="timeline-place">Sardar Patel University, Vallabh Vidyanagar, India[cite: 1]</div>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dates">2013</div>
           <div class="timeline-body">
-            <div class="timeline-title">B.Sc. in Chemistry</div>
-            <div class="timeline-place">Saurashtra University, Rajkot, India</div>
+            <div class="timeline-title">B.Sc. in Chemistry[cite: 1]</div>
+            <div class="timeline-place">Saurashtra University, Rajkot, India[cite: 1]</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Publications Section with Interactive Filter & Clickable Highlight Cards -->
+    <!-- Publications Section with Interactive Filter & Clickable Cards -->
     <section id="publications">
       <div class="section-header">
         <h2 class="section-title">Publications</h2>
@@ -719,12 +895,12 @@
         <div class="pub-item" data-category="first-author under-review">
           <div class="pub-num">01</div>
           <div class="pub-details">
-            <div class="pub-title">Equatorial Indian Ocean warming controls inland precipitation isotopes through a Gill-type atmospheric response</div>
-            <div class="pub-authors"><strong>Oza, H.</strong>, et al. (2026)</div>
+            <div class="pub-title">Equatorial Indian Ocean warming controls inland precipitation isotopes through a Gill-type atmospheric response[cite: 6]</div>
+            <div class="pub-authors"><strong>Oza, H.</strong>, et al. (2026)[cite: 6]</div>
             <div class="pub-meta">
-              <em>Atmospheric Research</em>
+              <em>Atmospheric Research</em>[cite: 6]
               <span class="badge highlight">First author</span>
-              <span class="badge">Under Review</span>
+              <span class="badge">Under Review[cite: 6]</span>
             </div>
           </div>
         </div>
@@ -733,24 +909,24 @@
         <div class="pub-item" data-category="first-author under-review">
           <div class="pub-num">02</div>
           <div class="pub-details">
-            <div class="pub-title">Precipitation Isotopes Provide Early Warning of Atmospheric Reorganization Decades Before Extreme Event Intensification</div>
-            <div class="pub-authors"><strong>Oza, H.</strong>, et al. (2026)</div>
+            <div class="pub-title">Precipitation Isotopes Provide Early Warning of Atmospheric Reorganization Decades Before Extreme Event Intensification[cite: 6]</div>
+            <div class="pub-authors"><strong>Oza, H.</strong>, et al. (2026)[cite: 6]</div>
             <div class="pub-meta">
-              <em>Journal of Hydrology</em>
+              <em>Journal of Hydrology</em>[cite: 6]
               <span class="badge highlight">First author</span>
-              <span class="badge">Under Review</span>
+              <span class="badge">Under Review[cite: 6]</span>
             </div>
           </div>
         </div>
 
-        <!-- 03 (Published with corrected DOI) -->
+        <!-- 03 (Published) -->
         <a href="https://doi.org/10.1016/j.jhydrol.2026.136636" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="first-author">
           <div class="pub-num">03</div>
           <div class="pub-details">
-            <div class="pub-title">Precipitation Isotope Baseline for India: Regional Patterns, Process Controls, and Applications</div>
-            <div class="pub-authors"><strong>Oza, H.</strong>, et al. (2026)</div>
+            <div class="pub-title">Precipitation Isotope Baseline for India: Regional Patterns, Process Controls, and Applications[cite: 6]</div>
+            <div class="pub-authors"><strong>Oza, H.</strong>, et al. (2026)[cite: 6]</div>
             <div class="pub-meta">
-              <em>Journal of Hydrology</em>, 136636
+              <em>Journal of Hydrology</em>, 136636[cite: 6]
               <span class="badge highlight">First author</span>
               <span class="pub-link-icon">doi:10.1016/j.jhydrol.2026.136636 &rarr;</span>
             </div>
@@ -761,10 +937,10 @@
         <a href="https://doi.org/10.1002/hyp.70727" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
           <div class="pub-num">04</div>
           <div class="pub-details">
-            <div class="pub-title">Seasonal Variability of Water Vapour Dynamics in the Semi-Arid Region of Western India: Revelations from Isotopic Investigation at Mt. Abu, Rajasthan</div>
-            <div class="pub-authors">Padhya, V., <strong>Oza, H.</strong>, Ganguly, A., Chakra, S., &amp; Deshpande, R. D. (2026)</div>
+            <div class="pub-title">Seasonal Variability of Water Vapour Dynamics in the Semi-Arid Region of Western India: Revelations from Isotopic Investigation at Mt. Abu, Rajasthan[cite: 6]</div>
+            <div class="pub-authors">Padhya, V., <strong>Oza, H.</strong>, Ganguly, A., Chakra, S., &amp; Deshpande, R. D. (2026)[cite: 6]</div>
             <div class="pub-meta">
-              <em>Hydrological Processes</em>, e70727
+              <em>Hydrological Processes</em>, e70727[cite: 6]
               <span class="badge">Co-author</span>
               <span class="pub-link-icon">doi:10.1002/hyp.70727 &rarr;</span>
             </div>
@@ -775,303 +951,4 @@
         <a href="https://doi.org/10.1016/j.gsd.2025.101548" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
           <div class="pub-num">05</div>
           <div class="pub-details">
-            <div class="pub-title">Deciphering Groundwater Dynamics and Recharge Sources Across India Using Stable Isotopes: Implications for Sustainable Water Management</div>
-            <div class="pub-authors">Pandey, A., Padhya, V., Chakra, S., Ganguly, A., <strong>Oza, H.</strong>, Patidar, R., &amp; Deshpande, R. D. (2025)</div>
-            <div class="pub-meta">
-              <em>Groundwater for Sustainable Development</em>, 101548
-              <span class="badge">Co-author</span>
-              <span class="pub-link-icon">doi:10.1016/j.gsd.2025.101548 &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- 06 (Published) -->
-        <a href="https://doi.org/10.1007/s00382-024-07380-6" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
-          <div class="pub-num">06</div>
-          <div class="pub-details">
-            <div class="pub-title">Insights into Indian summer monsoon rainfall variability: early twentieth century warming vs. mid-twentieth century cooling</div>
-            <div class="pub-authors">Chakra, S., Vishnu, S., <strong>Oza, H.</strong>, Ganguly, A., Pandey, A., Padhya, V., &amp; Deshpande, R. D. (2025)</div>
-            <div class="pub-meta">
-              <em>Climate Dynamics</em>, 63(10), 1–16
-              <span class="badge">Co-author</span>
-              <span class="pub-link-icon">doi:10.1007/s00382-024-07380-6 &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- 07 (Published) -->
-        <a href="https://doi.org/10.1007/s10584-024-03788-9" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
-          <div class="pub-num">07</div>
-          <div class="pub-details">
-            <div class="pub-title">Finer aspects of spatio-temporal variations in Indian summer monsoon rainfall trend reversals over the last 120 years</div>
-            <div class="pub-authors">Chakra, S., <strong>Oza, H.</strong>, Ganguly, A., Pandey, A., Padhya, V., &amp; Deshpande, R. D. (2024)</div>
-            <div class="pub-meta">
-              <em>Climatic Change</em>, 177(8), pp. 1–22
-              <span class="badge">Co-author</span>
-              <span class="pub-link-icon">doi:10.1007/s10584-024-03788-9 &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- 08 (Published) -->
-        <a href="https://doi.org/10.1016/j.jhydrol.2023.129975" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
-          <div class="pub-num">08</div>
-          <div class="pub-details">
-            <div class="pub-title">Multidecadal summer monsoon rainfall trend reversals in South Peninsular India: A new approach to examining long-term rainfall dataset</div>
-            <div class="pub-authors">Chakra, S., Ganguly, A., <strong>Oza, H.</strong>, Padhya, V., Pandey, A., &amp; Deshpande, R. D. (2023)</div>
-            <div class="pub-meta">
-              <em>Journal of Hydrology</em>, 624, 129975
-              <span class="badge">Co-author</span>
-              <span class="pub-link-icon">doi:10.1016/j.jhydrol.2023.129975 &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- 09 (Published) -->
-        <a href="https://doi.org/10.1038/s41598-023-27664-y" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
-          <div class="pub-num">09</div>
-          <div class="pub-details">
-            <div class="pub-title">Extreme local recycling of moisture via wetlands and forests in North-East Indian subcontinent: a Mini-Amazon</div>
-            <div class="pub-authors">Ganguly, A., <strong>Oza, H.</strong>, Padhya, V., Pandey, A., Chakra, S., &amp; Deshpande, R. D. (2023)</div>
-            <div class="pub-meta">
-              <em>Scientific Reports</em>, 13(1), 521
-              <span class="badge">Co-author</span>
-              <span class="pub-link-icon">doi:10.1038/s41598-023-27664-y &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- 10 (Published) -->
-        <a href="https://doi.org/10.1080/10256016.2023.2173456" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
-          <div class="pub-num">10</div>
-          <div class="pub-details">
-            <div class="pub-title">New insights into diffusive kinetic fractionation during liquid condensation under supersaturated environment: an alternative approach for isotope tagging of ground-level water vapour</div>
-            <div class="pub-authors">Ganguly, A., Padhya, V., <strong>Oza, H.</strong>, Strauch, G., &amp; Deshpande, R. D. (2023)</div>
-            <div class="pub-meta">
-              <em>Isotopes in Environmental and Health Studies</em>, 59(1), pp. 1–26
-              <span class="badge">Co-author</span>
-              <span class="pub-link-icon">doi:10.1080/10256016.2023.2173456 &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- 11 (Published) -->
-        <a href="https://doi.org/10.1016/j.atmosres.2021.105997" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="first-author">
-          <div class="pub-num">11</div>
-          <div class="pub-details">
-            <div class="pub-title">Investigating hydrometeorology of the Western Himalayas: Insights from stable isotopes of water and meteorological parameters</div>
-            <div class="pub-authors"><strong>Oza, H.</strong>, Padhya, V., Ganguly, A., &amp; Deshpande, R. D. (2022)</div>
-            <div class="pub-meta">
-              <em>Atmospheric Research</em>, 268, 105997
-              <span class="badge highlight">First author</span>
-              <span class="pub-link-icon">doi:10.1016/j.atmosres.2021.105997 &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- 12 (Published) -->
-        <a href="https://doi.org/10.1016/j.jhydrol.2020.125601" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="first-author">
-          <div class="pub-num">12</div>
-          <div class="pub-details">
-            <div class="pub-title">Hydrometeorological processes and evaporation from falling rain in Indian sub-continent: insights from stable isotopes and meteorological parameters</div>
-            <div class="pub-authors"><strong>Oza, H.</strong>, Ganguly, A., Padhya, V., &amp; Deshpande, R. D. (2020)</div>
-            <div class="pub-meta">
-              <em>Journal of Hydrology</em>, 591, 125601
-              <span class="badge highlight">First author</span>
-              <span class="pub-link-icon">doi:10.1016/j.jhydrol.2020.125601 &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- 13 (Published) -->
-        <a href="https://doi.org/10.1007/s00382-020-05139-4" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="first-author">
-          <div class="pub-num">13</div>
-          <div class="pub-details">
-            <div class="pub-title">Hydrometeorological processes in semi-arid western India: insights from long term isotope record of daily precipitation</div>
-            <div class="pub-authors"><strong>Oza, H.</strong>, Padhya, V., Ganguly, A., Saikranthi, K., Rao, T. N., &amp; Deshpande, R. D. (2020)</div>
-            <div class="pub-meta">
-              <em>Climate Dynamics</em>, 54, pp. 2745–2757
-              <span class="badge highlight">First author</span>
-              <span class="pub-link-icon">doi:10.1007/s00382-020-05139-4 &rarr;</span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-    <!-- Skills, Laboratory & Teaching Section -->
-    <section id="skills">
-      <div class="section-header">
-        <h2 class="section-title">Field, Lab &amp; Computational Skills</h2>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Analytical &amp; Laboratory</h3>
-          <div class="tag-cloud">
-            <span class="tag">CRDS Spectrometry (&delta;<sup>18</sup>O, &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H)</span>
-            <span class="tag">IRMS Instrumentation</span>
-            <span class="tag">Picarro Water &amp; Vapor Analyzers</span>
-            <span class="tag">Radium Isotopes</span>
-            <span class="tag">Lab Setup &amp; Maintenance</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h3>Fieldwork &amp; Sampling</h3>
-          <div class="tag-cloud">
-            <span class="tag">Coastal Groundwater Sampling</span>
-            <span class="tag">Submarine Groundwater Discharge (SGD)</span>
-            <span class="tag">Surface Water &amp; Reservoir Sampling</span>
-            <span class="tag">Daily Precipitation Network Logistics</span>
-            <span class="tag">Atmospheric Vapor Trapping</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h3>Computational &amp; Modeling</h3>
-          <div class="tag-cloud">
-            <span class="tag">Python (Scientific Computing)</span>
-            <span class="tag">Large data analysis</span>
-            <span class="tag">HYSPLIT Trajectory Modeling</span>
-            <span class="tag">ERA5 &amp; NCEP Climate Reanalysis</span>
-            <span class="tag">AI / Machine Learning for Hydrology</span>
-            <span class="tag">USGS TracerLPM</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h3>Teaching &amp; Academic Service</h3>
-          <div class="tag-cloud">
-            <span class="tag">Reviewer: International Journal of Climatology</span>
-            <span class="tag">Reviewer: MDPI Atmosphere</span>
-            <span class="tag">Reviewer: MDPI Sustainability</span>
-            <span class="tag">Stable Isotope Geochemistry (NTU)</span>
-            <span class="tag">Cambrian Ocean Geochemistry (NTU)</span>
-            <span class="tag">Scientific Communication</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Awards, Honours & Fellowships -->
-    <section id="honours">
-      <div class="section-header">
-        <h2 class="section-title">Awards &amp; Fellowships</h2>
-      </div>
-
-      <div class="honours-list">
-        <div class="honour-item">
-          <div class="honour-year">2023 – 2024</div>
-          <div class="honour-content">
-            <h4>Postdoctoral Fellowship</h4>
-            <p>Co-sponsored by Department of Geosciences, National Taiwan University and National Science and Technology Council (NSTC), Taiwan</p>
-          </div>
-        </div>
-
-        <div class="honour-item">
-          <div class="honour-year">2022 – 2023</div>
-          <div class="honour-content">
-            <h4>Postdoctoral Fellowship</h4>
-            <p>Awarded by Institute of Earth Sciences, Academia Sinica, Taiwan</p>
-          </div>
-        </div>
-
-        <div class="honour-item">
-          <div class="honour-year">2020 – 2022</div>
-          <div class="honour-content">
-            <h4>Postdoctoral Fellowship</h4>
-            <p>Awarded by Physical Research Laboratory (PRL), Department of Space, India</p>
-          </div>
-        </div>
-
-        <div class="honour-item">
-          <div class="honour-year">2019</div>
-          <div class="honour-content">
-            <h4>IAEA Travel Grant</h4>
-            <p>Awarded by the International Atomic Energy Agency (IAEA) for the International Symposium on Isotope Hydrology, Vienna, Austria</p>
-          </div>
-        </div>
-
-        <div class="honour-item">
-          <div class="honour-year">2019</div>
-          <div class="honour-content">
-            <h4>MAPEX Conference Sponsorship</h4>
-            <p>Full sponsorship awarded by Indian Institute of Technology Delhi (IIT-D) for MAPEX International Conference</p>
-          </div>
-        </div>
-
-        <div class="honour-item">
-          <div class="honour-year">2017 – 2020</div>
-          <div class="honour-content">
-            <h4>Senior Research Fellowship (SRF)</h4>
-            <p>Awarded by Physical Research Laboratory, India</p>
-          </div>
-        </div>
-
-        <div class="honour-item">
-          <div class="honour-year">2015 – 2017</div>
-          <div class="honour-content">
-            <h4>Junior Research Fellowship (JRF)</h4>
-            <p>Awarded by Physical Research Laboratory, India</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <div class="section-header">
-        <h2 class="section-title">Contact</h2>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">
-        Interested in collaborative research on isotope hydrology, monsoon dynamics, or coastal aquifer systems? Please feel free to get in touch.
-      </p>
-      <div class="hero-links">
-        <a href="mailto:harshoza85@gmail.com" class="pill-link">harshoza85@gmail.com</a>
-        <a href="https://scholar.google.com/citations?user=GUsSfJEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="pill-link">Google Scholar</a>
-        <a href="https://orcid.org/0000-0003-0687-3374" target="_blank" rel="noopener noreferrer" class="pill-link">ORCID</a>
-        <a href="https://drive.google.com/file/d/1iJ8FKrtXyirTnD7yPCROLdigG8CKagv6/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="pill-link">PhD Thesis</a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      &copy; 2026 Harsh Oza, Ph.D. · Hosted with GitHub Pages.
-    </footer>
-
-  </div>
-
-  <!-- Vanilla JavaScript for Publication Filtering -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      const pubItems = document.querySelectorAll('.pub-item');
-
-      filterButtons.forEach(button => {
-        button.addEventListener('click', function () {
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          this.classList.add('active');
-
-          const filter = this.getAttribute('data-filter');
-
-          pubItems.forEach(item => {
-            if (filter === 'all') {
-              item.classList.remove('hidden');
-            } else {
-              const categories = item.getAttribute('data-category').split(' ');
-              if (categories.includes(filter)) {
-                item.classList.remove('hidden');
-              } else {
-                item.classList.add('hidden');
-              }
-            }
-          });
-        });
-      });
-    });
-  </script>
-
-</body>
-</html>
+            <div class="pub-title">Deciphering Groundwater Dynamics and Recharge Sources Across India Using Stable Isotopes: Implications for Sustainable Water Management
