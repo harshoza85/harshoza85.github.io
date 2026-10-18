@@ -62,6 +62,10 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.01em;
+      transition: color 0.15s ease;
+    }
+    .brand:hover {
+      color: var(--terracotta);
     }
     .nav-links {
       display: flex;
@@ -73,7 +77,8 @@
       color: var(--text-muted);
       font-size: 0.9rem;
       font-weight: 450;
-      transition: color 0.15s ease;
+      transition: all 0.15s ease;
+      padding: 0.2rem 0;
     }
     .nav-links a:hover {
       color: var(--terracotta);
@@ -149,24 +154,16 @@
       text-decoration: none;
       font-size: 0.84rem;
       font-weight: 500;
-      padding: 0.38rem 0.85rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 6px;
-      transition: all 0.15s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .pill-link:hover {
       border-color: var(--terracotta);
       color: var(--terracotta);
       background: #FFFFFF;
-    }
-    .pill-static {
-      display: inline-flex;
-      align-items: center;
-      background: var(--card-subtle);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.84rem;
-      padding: 0.38rem 0.85rem;
-      border-radius: 6px;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(201, 100, 66, 0.1);
     }
     .profile-photo {
       width: 145px;
@@ -190,6 +187,10 @@
       border-radius: 8px;
       padding: 0.9rem 1rem;
       text-align: center;
+      transition: border-color 0.15s ease;
+    }
+    .metric-card:hover {
+      border-color: #D6CBC0;
     }
     .metric-value {
       font-family: var(--font-serif);
@@ -237,6 +238,11 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.25rem;
+      transition: all 0.2s ease;
+    }
+    .focus-card:hover {
+      border-color: #D6CBC0;
+      transform: translateY(-1px);
     }
     .focus-card h3 {
       font-family: var(--font-serif);
@@ -308,23 +314,25 @@
       font-family: var(--font-sans);
       font-size: 0.82rem;
       font-weight: 500;
-      padding: 0.35rem 0.8rem;
+      padding: 0.4rem 0.85rem;
       border-radius: 6px;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .filter-btn:hover {
       border-color: var(--terracotta);
       color: var(--terracotta);
+      transform: translateY(-1px);
     }
     .filter-btn.active {
       background: var(--terracotta-light);
       border-color: var(--terracotta-border);
       color: var(--terracotta);
       font-weight: 600;
+      box-shadow: 0 2px 6px rgba(201, 100, 66, 0.08);
     }
 
-    /* Publications List */
+    /* Publications List & Clickable Cards */
     .pub-list {
       display: flex;
       flex-direction: column;
@@ -337,7 +345,22 @@
       padding: 1.15rem 1.25rem;
       display: flex;
       gap: 1rem;
-      transition: border-color 0.15s ease;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .pub-item.clickable {
+      cursor: pointer;
+    }
+    .pub-item.clickable:hover {
+      border-color: var(--terracotta);
+      background: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(201, 100, 66, 0.1);
+    }
+    .pub-item.clickable:hover .pub-title {
+      color: var(--terracotta);
     }
     .pub-item.hidden {
       display: none;
@@ -349,6 +372,7 @@
       font-weight: 600;
       width: 24px;
       flex-shrink: 0;
+      padding-top: 0.1rem;
     }
     .pub-details {
       flex: 1;
@@ -358,7 +382,8 @@
     .pub-title {
       color: var(--text);
       font-weight: 550;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
+      transition: color 0.15s ease;
     }
     .pub-authors {
       color: var(--text-muted);
@@ -375,7 +400,7 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 0.5rem;
-      margin-top: 0.35rem;
+      margin-top: 0.4rem;
     }
     .badge {
       display: inline-block;
@@ -392,16 +417,14 @@
       border-color: var(--terracotta-border);
       color: var(--terracotta);
     }
-    .pub-link {
+    .pub-link-icon {
+      font-size: 0.8rem;
       color: var(--terracotta);
-      text-decoration: none;
-      font-size: 0.82rem;
-    }
-    .pub-link:hover {
-      text-decoration: underline;
+      margin-left: auto;
+      font-weight: 500;
     }
 
-    /* Skills & Categorized Grid */
+    /* Skills Grid */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -412,6 +435,10 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.25rem;
+      transition: border-color 0.15s ease;
+    }
+    .skill-card:hover {
+      border-color: #D6CBC0;
     }
     .skill-card h3 {
       font-family: var(--font-serif);
@@ -428,10 +455,15 @@
     .tag {
       background: var(--card-subtle);
       border: 1px solid var(--border);
-      padding: 0.28rem 0.65rem;
+      padding: 0.3rem 0.7rem;
       border-radius: 6px;
       font-size: 0.82rem;
       color: var(--text);
+      transition: all 0.15s ease;
+    }
+    .tag:hover {
+      border-color: var(--terracotta-border);
+      color: var(--terracotta);
     }
 
     /* Honours List */
@@ -447,12 +479,16 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1rem 1.25rem;
+      transition: border-color 0.15s ease;
+    }
+    .honour-item:hover {
+      border-color: #D6CBC0;
     }
     .honour-year {
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--terracotta);
-      width: 75px;
+      width: 80px;
       flex-shrink: 0;
     }
     .honour-content h4 {
@@ -509,12 +545,11 @@
           continental moisture transport, Asian monsoon variability, and coastal groundwater dynamics.
         </p>
 
-        <!-- Clean Links (No Emojis, No Phone) -->
+        <!-- Clean Interactive Links -->
         <div class="hero-links">
           <a href="mailto:harshoza85@gmail.com" class="pill-link">Email</a>
           <a href="https://scholar.google.com/citations?user=GUsSfJEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="pill-link">Google Scholar</a>
           <a href="https://orcid.org/0000-0003-0687-3374" target="_blank" rel="noopener noreferrer" class="pill-link">ORCID</a>
-          <span class="pill-static">Taipei, Taiwan</span>
         </div>
 
         <!-- Metrics Cards -->
@@ -612,7 +647,7 @@
             <div class="timeline-title">Postdoctoral Fellow · with Prof. R. D. Deshpande</div>
             <div class="timeline-place">Geosciences Division, Physical Research Laboratory (PRL), India</div>
             <div class="timeline-desc">
-              Established and managed a CRDS laboratory for liquid and vapor triple oxygen and hydrogen isotopes; analyzed Western Himalayan precipitation and paleoclimate dynamics.
+              Established and managed a CRDS laboratory for liquid and vapor triple oxygen and hydrogen isotopes; evaluated Western Himalayan precipitation and paleoclimate dynamics.
             </div>
           </div>
         </div>
@@ -663,7 +698,7 @@
       </div>
     </section>
 
-    <!-- Publications Section with Interactive Filter -->
+    <!-- Publications Section with Interactive Filter & Clickable Highlight Cards -->
     <section id="publications">
       <div class="section-header">
         <h2 class="section-title">Publications</h2>
@@ -674,12 +709,12 @@
         <button class="filter-btn active" data-filter="all">All (13)</button>
         <button class="filter-btn" data-filter="first-author">First Author (6)</button>
         <button class="filter-btn" data-filter="co-author">Co-Author (7)</button>
-        <button class="filter-btn" data-filter="under-review">Under Review (4)</button>
+        <button class="filter-btn" data-filter="under-review">Under Review (2)</button>
       </div>
 
       <div class="pub-list">
         
-        <!-- 01 -->
+        <!-- 01 (Under Review) -->
         <div class="pub-item" data-category="first-author under-review">
           <div class="pub-num">01</div>
           <div class="pub-details">
@@ -693,7 +728,7 @@
           </div>
         </div>
 
-        <!-- 02 -->
+        <!-- 02 (Under Review) -->
         <div class="pub-item" data-category="first-author under-review">
           <div class="pub-num">02</div>
           <div class="pub-details">
@@ -707,8 +742,8 @@
           </div>
         </div>
 
-        <!-- 03 -->
-        <div class="pub-item" data-category="first-author under-review">
+        <!-- 03 (Published) -->
+        <a href="https://doi.org/10.1002/hyp.70727" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="first-author">
           <div class="pub-num">03</div>
           <div class="pub-details">
             <div class="pub-title">Precipitation Isotope Baseline for India: Regional Patterns, Process Controls, and Applications</div>
@@ -716,27 +751,27 @@
             <div class="pub-meta">
               <em>Journal of Hydrology</em>
               <span class="badge highlight">First author</span>
-              <span class="badge">Under Review</span>
+              <span class="pub-link-icon">View Paper &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 04 -->
-        <div class="pub-item" data-category="co-author under-review">
+        <!-- 04 (Published in Hydrological Processes) -->
+        <a href="https://doi.org/10.1002/hyp.70727" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
           <div class="pub-num">04</div>
           <div class="pub-details">
-            <div class="pub-title">Seasonal Variability of Water Vapour Dynamics in the Semi-Arid Region of Western India revelations from isotopic investigation at Mt. Abu, Rajasthan</div>
+            <div class="pub-title">Seasonal Variability of Water Vapour Dynamics in the Semi-Arid Region of Western India: Revelations from Isotopic Investigation at Mt. Abu, Rajasthan</div>
             <div class="pub-authors">Padhya, V., <strong>Oza, H.</strong>, Ganguly, A., Chakra, S., &amp; Deshpande, R. D. (2026)</div>
             <div class="pub-meta">
-              <em>Hydrological Processes</em>
+              <em>Hydrological Processes</em>, e70727
               <span class="badge">Co-author</span>
-              <span class="badge">Under Review</span>
+              <span class="pub-link-icon">doi:10.1002/hyp.70727 &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 05 -->
-        <div class="pub-item" data-category="co-author">
+        <!-- 05 (Published) -->
+        <a href="https://doi.org/10.1016/j.gsd.2025.101548" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
           <div class="pub-num">05</div>
           <div class="pub-details">
             <div class="pub-title">Deciphering Groundwater Dynamics and Recharge Sources Across India Using Stable Isotopes: Implications for Sustainable Water Management</div>
@@ -744,13 +779,13 @@
             <div class="pub-meta">
               <em>Groundwater for Sustainable Development</em>, 101548
               <span class="badge">Co-author</span>
-              <a href="https://doi.org/10.1016/j.gsd.2025.101548" target="_blank" rel="noopener noreferrer" class="pub-link">doi:10.1016/j.gsd.2025.101548</a>
+              <span class="pub-link-icon">doi:10.1016/j.gsd.2025.101548 &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 06 -->
-        <div class="pub-item" data-category="co-author">
+        <!-- 06 (Published) -->
+        <a href="https://doi.org/10.1007/s00382-024-07380-6" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
           <div class="pub-num">06</div>
           <div class="pub-details">
             <div class="pub-title">Insights into Indian summer monsoon rainfall variability: early twentieth century warming vs. mid-twentieth century cooling</div>
@@ -758,13 +793,13 @@
             <div class="pub-meta">
               <em>Climate Dynamics</em>, 63(10), 1–16
               <span class="badge">Co-author</span>
-              <a href="https://doi.org/10.1007/s00382-024-07380-6" target="_blank" rel="noopener noreferrer" class="pub-link">doi:10.1007/s00382-024-07380-6</a>
+              <span class="pub-link-icon">doi:10.1007/s00382-024-07380-6 &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 07 -->
-        <div class="pub-item" data-category="co-author">
+        <!-- 07 (Published) -->
+        <a href="https://doi.org/10.1007/s10584-024-03788-9" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
           <div class="pub-num">07</div>
           <div class="pub-details">
             <div class="pub-title">Finer aspects of spatio-temporal variations in Indian summer monsoon rainfall trend reversals over the last 120 years</div>
@@ -772,13 +807,13 @@
             <div class="pub-meta">
               <em>Climatic Change</em>, 177(8), pp. 1–22
               <span class="badge">Co-author</span>
-              <a href="https://doi.org/10.1007/s10584-024-03788-9" target="_blank" rel="noopener noreferrer" class="pub-link">doi:10.1007/s10584-024-03788-9</a>
+              <span class="pub-link-icon">doi:10.1007/s10584-024-03788-9 &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 08 -->
-        <div class="pub-item" data-category="co-author">
+        <!-- 08 (Published) -->
+        <a href="https://doi.org/10.1016/j.jhydrol.2023.129975" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
           <div class="pub-num">08</div>
           <div class="pub-details">
             <div class="pub-title">Multidecadal summer monsoon rainfall trend reversals in South Peninsular India: A new approach to examining long-term rainfall dataset</div>
@@ -786,13 +821,13 @@
             <div class="pub-meta">
               <em>Journal of Hydrology</em>, 624, 129975
               <span class="badge">Co-author</span>
-              <a href="https://doi.org/10.1016/j.jhydrol.2023.129975" target="_blank" rel="noopener noreferrer" class="pub-link">doi:10.1016/j.jhydrol.2023.129975</a>
+              <span class="pub-link-icon">doi:10.1016/j.jhydrol.2023.129975 &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 09 -->
-        <div class="pub-item" data-category="co-author">
+        <!-- 09 (Published) -->
+        <a href="https://doi.org/10.1038/s41598-023-27664-y" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
           <div class="pub-num">09</div>
           <div class="pub-details">
             <div class="pub-title">Extreme local recycling of moisture via wetlands and forests in North-East Indian subcontinent: a Mini-Amazon</div>
@@ -800,13 +835,13 @@
             <div class="pub-meta">
               <em>Scientific Reports</em>, 13(1), 521
               <span class="badge">Co-author</span>
-              <a href="https://doi.org/10.1038/s41598-023-27664-y" target="_blank" rel="noopener noreferrer" class="pub-link">doi:10.1038/s41598-023-27664-y</a>
+              <span class="pub-link-icon">doi:10.1038/s41598-023-27664-y &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 10 -->
-        <div class="pub-item" data-category="co-author">
+        <!-- 10 (Published) -->
+        <a href="https://doi.org/10.1080/10256016.2023.2173456" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="co-author">
           <div class="pub-num">10</div>
           <div class="pub-details">
             <div class="pub-title">New insights into diffusive kinetic fractionation during liquid condensation under supersaturated environment: an alternative approach for isotope tagging of ground-level water vapour</div>
@@ -814,13 +849,13 @@
             <div class="pub-meta">
               <em>Isotopes in Environmental and Health Studies</em>, 59(1), pp. 1–26
               <span class="badge">Co-author</span>
-              <a href="https://doi.org/10.1080/10256016.2023.2173456" target="_blank" rel="noopener noreferrer" class="pub-link">doi:10.1080/10256016.2023.2173456</a>
+              <span class="pub-link-icon">doi:10.1080/10256016.2023.2173456 &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 11 -->
-        <div class="pub-item" data-category="first-author">
+        <!-- 11 (Published) -->
+        <a href="https://doi.org/10.1016/j.atmosres.2021.105997" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="first-author">
           <div class="pub-num">11</div>
           <div class="pub-details">
             <div class="pub-title">Investigating hydrometeorology of the Western Himalayas: Insights from stable isotopes of water and meteorological parameters</div>
@@ -828,13 +863,13 @@
             <div class="pub-meta">
               <em>Atmospheric Research</em>, 268, 105997
               <span class="badge highlight">First author</span>
-              <a href="https://doi.org/10.1016/j.atmosres.2021.105997" target="_blank" rel="noopener noreferrer" class="pub-link">doi:10.1016/j.atmosres.2021.105997</a>
+              <span class="pub-link-icon">doi:10.1016/j.atmosres.2021.105997 &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 12 -->
-        <div class="pub-item" data-category="first-author">
+        <!-- 12 (Published) -->
+        <a href="https://doi.org/10.1016/j.jhydrol.2020.125601" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="first-author">
           <div class="pub-num">12</div>
           <div class="pub-details">
             <div class="pub-title">Hydrometeorological processes and evaporation from falling rain in Indian sub-continent: insights from stable isotopes and meteorological parameters</div>
@@ -842,13 +877,13 @@
             <div class="pub-meta">
               <em>Journal of Hydrology</em>, 591, 125601
               <span class="badge highlight">First author</span>
-              <a href="https://doi.org/10.1016/j.jhydrol.2020.125601" target="_blank" rel="noopener noreferrer" class="pub-link">doi:10.1016/j.jhydrol.2020.125601</a>
+              <span class="pub-link-icon">doi:10.1016/j.jhydrol.2020.125601 &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- 13 -->
-        <div class="pub-item" data-category="first-author">
+        <!-- 13 (Published) -->
+        <a href="https://doi.org/10.1007/s00382-020-05139-4" target="_blank" rel="noopener noreferrer" class="pub-item clickable" data-category="first-author">
           <div class="pub-num">13</div>
           <div class="pub-details">
             <div class="pub-title">Hydrometeorological processes in semi-arid western India: insights from long term isotope record of daily precipitation</div>
@@ -856,10 +891,10 @@
             <div class="pub-meta">
               <em>Climate Dynamics</em>, 54, pp. 2745–2757
               <span class="badge highlight">First author</span>
-              <a href="https://doi.org/10.1007/s00382-020-05139-4" target="_blank" rel="noopener noreferrer" class="pub-link">doi:10.1007/s00382-020-05139-4</a>
+              <span class="pub-link-icon">doi:10.1007/s00382-020-05139-4 &rarr;</span>
             </div>
           </div>
-        </div>
+        </a>
 
       </div>
     </section>
@@ -878,7 +913,6 @@
             <span class="tag">IRMS Instrumentation</span>
             <span class="tag">Picarro Water &amp; Vapor Analyzers</span>
             <span class="tag">Radium Isotopes</span>
-            <span class="tag">Noble Gas Age Dating</span>
             <span class="tag">Lab Setup &amp; Maintenance</span>
           </div>
         </div>
@@ -898,23 +932,23 @@
           <h3>Computational &amp; Modeling</h3>
           <div class="tag-cloud">
             <span class="tag">Python (Scientific Computing)</span>
+            <span class="tag">Large data analysis</span>
+            <span class="tag">HYSPLIT Trajectory Modeling</span>
             <span class="tag">ERA5 &amp; NCEP Climate Reanalysis</span>
-            <span class="tag">EOF (Empirical Orthogonal Functions)</span>
             <span class="tag">AI / Machine Learning for Hydrology</span>
             <span class="tag">USGS TracerLPM</span>
-            <span class="tag">Non-Parametric Statistical Correlation</span>
           </div>
         </div>
 
         <div class="skill-card">
-          <h3>Teaching &amp; Service</h3>
+          <h3>Teaching &amp; Academic Service</h3>
           <div class="tag-cloud">
+            <span class="tag">Reviewer: International Journal of Climatology</span>
+            <span class="tag">Reviewer: MDPI Atmosphere</span>
+            <span class="tag">Reviewer: MDPI Sustainability</span>
             <span class="tag">Stable Isotope Geochemistry (NTU)</span>
             <span class="tag">Cambrian Ocean Geochemistry (NTU)</span>
             <span class="tag">Scientific Communication</span>
-            <span class="tag">Reviewer: Journal of Hydrology</span>
-            <span class="tag">Reviewer: Atmospheric Research</span>
-            <span class="tag">Symposium Organizing (PRL)</span>
           </div>
         </div>
       </div>
