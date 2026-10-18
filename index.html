@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Harsh Oza | Postdoctoral Fellow</title>
+  
+  <!-- Claude-inspired typography: Newsreader (editorial serif) & Inter (clean sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Claude-inspired warm parchment palette */
+      --bg: #FBF9F5;
+      --card-bg: #FFFFFF;
+      --card-subtle: #F6F3ED;
+      --border: #E8E2D9;
+      --border-light: #F0EAE1;
+      --text: #2D2926;
+      --text-muted: #6E675F;
+      --terracotta: #C96442;
+      --terracotta-hover: #B25333;
+      --terracotta-light: #FBF0EB;
+      --terracotta-border: #F1D2C5;
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(251, 249, 245, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 450;
+      transition: color 0.15s ease;
+    }
+    .nav-links a:hover {
+      color: var(--terracotta);
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 680px) {
+      .hero {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--terracotta);
+      background: var(--terracotta-light);
+      border: 1px solid var(--terracotta-border);
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+    }
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+    .hero-bio {
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.84rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+    .pill-link:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+      background: #FFFFFF;
+    }
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 4px 14px rgba(45, 41, 38, 0.08);
+      flex-shrink: 0;
+    }
+
+    /* Metric Badges */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.85rem;
+    }
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      text-align: center;
+    }
+    .metric-value {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--terracotta);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .metric-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    /* Section Headings */
+    section {
+      margin-bottom: 3.5rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.6rem;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    /* Focus Areas / Cards */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .focus-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      transition: border-color 0.15s ease;
+    }
+    .focus-card:hover {
+      border-color: #D6CBC0;
+    }
+    .focus-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      margin-bottom: 0.45rem;
+      color: var(--text);
+    }
+    .focus-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Timeline Items */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    @media (min-width: 600px) {
+      .timeline-item {
+        flex-direction: row;
+        gap: 1.5rem;
+      }
+    }
+    .timeline-dates {
+      width: 120px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--terracotta);
+      flex-shrink: 0;
+      padding-top: 0.15rem;
+    }
+    .timeline-body {
+      flex: 1;
+    }
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .timeline-place {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .timeline-desc li {
+      margin-left: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Publications List */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .pub-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.15rem 1.25rem;
+      display: flex;
+      gap: 1rem;
+      transition: border-color 0.15s ease;
+    }
+    .pub-item:hover {
+      border-color: #D6CBC0;
+    }
+    .pub-num {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--terracotta);
+      font-weight: 600;
+      width: 24px;
+      flex-shrink: 0;
+    }
+    .pub-details {
+      flex: 1;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .pub-title {
+      color: var(--text);
+      font-weight: 550;
+      margin-bottom: 0.2rem;
+    }
+    .pub-authors {
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      margin-bottom: 0.25rem;
+    }
+    .pub-authors strong {
+      color: var(--text);
+    }
+    .pub-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.35rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: var(--card-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .badge.highlight {
+      background: var(--terracotta-light);
+      border-color: var(--terracotta-border);
+      color: var(--terracotta);
+    }
+    .pub-link {
+      color: var(--terracotta);
+      text-decoration: none;
+      font-size: 0.82rem;
+    }
+    .pub-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills Pill Cloud */
+    .skills-group {
+      margin-bottom: 1.2rem;
+    }
+    .skills-group h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .pill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--terracotta);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#home" class="brand">Dr. Harsh Oza</a>
+      <ul class="nav-links">
+        <li><a href="#research">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container" id="home">
+    
+    <!-- Hero Profile Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Postdoctoral Fellow</span>
+        <h1 class="hero-name">Harsh Oza, Ph.D.</h1>
+        <div class="hero-subtitle">
+          Department of Geosciences · National Taiwan University
+        </div>
+        <p class="hero-bio">
+          Earth Science researcher with 10 years of experience specializing in isotope hydrology and climate dynamics. 
+          My research focuses on the interpretation and analytical measurement of stable water isotopes (&delta;<sup>18</sup>O, 
+          &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H) to investigate hydrometeorological processes, monsoon variations, 
+          and coastal groundwater–surface water interactions across Asia.
+        </p>
+
+        <!-- Profile Links -->
+        <div class="hero-links">
+          <a href="mailto:harshoza85@gmail.com" class="pill-link">✉ harshoza85@gmail.com</a>
+          <a href="tel:+919033851992" class="pill-link">☎ +91 9033851992</a>
+          <a href="https://scholar.google.com" target="_blank" class="pill-link">🎓 Google Scholar</a>
+          <a href="https://orcid.org" target="_blank" class="pill-link">🆔 ORCID</a>
+          <span class="pill-link">📍 Taipei, Taiwan / Porbandar, India</span>
+        </div>
+
+        <!-- Metrics Cards -->
+        <div class="metrics">
+          <div class="metric-card">
+            <div class="metric-value">13+</div>
+            <div class="metric-label">Publications</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">10</div>
+            <div class="metric-label">Years Research</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">6</div>
+            <div class="metric-label">Research Grants / Fellowships</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">10+</div>
+            <div class="metric-label">Students Mentored</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avatar photo -->
+      <img src="profile.jpg" alt="Harsh Oza" class="profile-photo" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Harsh+Oza&background=F1D2C5&color=C96442&size=200';">
+    </header>
+
+    <!-- Research Focus Areas -->
+    <section id="research">
+      <div class="section-header">
+        <h2 class="section-title">Research Focus</h2>
+      </div>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <h3>Isotope Hydrology &amp; Meteorology</h3>
+          <p>Analyzing spatial and temporal stable isotope (&delta;<sup>18</sup>O, &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H) variations in precipitation to decipher moisture sources, raindrop evaporation, convective regimes, and orographic effects.</p>
+        </div>
+        <div class="focus-card">
+          <h3>Coastal Hydrogeology &amp; Salinity</h3>
+          <p>Quantifying coastal groundwater-surface water interactions, submarine groundwater discharge (SGD), and recharge dynamics in aquifer systems using hydrochemistry and isotopic tracing.</p>
+        </div>
+        <div class="focus-card">
+          <h3>Climate Dynamics &amp; Large Datasets</h3>
+          <p>Connecting meteorological reanalysis datasets with multidecadal precipitation isotope trends to evaluate Indian summer monsoon shifts, tropical warming, and atmospheric circulation extremes.</p>
+        </div>
+        <div class="focus-card">
+          <h3>Analytical Laser Spectroscopy</h3>
+          <p>Operating and calibrating Cavity Ring-Down Spectroscopy (CRDS) and Isotope Ratio Mass Spectrometry (IRMS) systems for high-precision water vapor, liquid water, and noble gas tracers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic & Research Appointments -->
+    <section id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Research Appointments</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dates">2025 – Present</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Postdoctoral Fellow</div>
+            <div class="timeline-place">Department of Geosciences, National Taiwan University · with Prof. Ya-Hsuan Liou</div>
+            <div class="timeline-desc">
+              Multi-site coastal groundwater and surface water sampling campaigns in Taiwan; isotope-based characterization (&delta;<sup>18</sup>O, &delta;<sup>2</sup>H) of salinity sources, submarine groundwater discharge, and coastal aquifer dynamics.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dates">2023 – 2025</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Postdoctoral Fellow</div>
+            <div class="timeline-place">Department of Geosciences, National Taiwan University · with Prof. Ludvig Löwemark</div>
+            <div class="timeline-desc">
+              Investigated decadal precipitation isotope (&delta;<sup>18</sup>O, &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H) records across Southeast Asia and the Malaya Peninsula, integrating synoptic meteorological parameters to understand regional paleoclimate and hydrometeorology.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dates">2022 – 2023</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Postdoctoral Fellow</div>
+            <div class="timeline-place">Institute of Earth Sciences, Academia Sinica, Taiwan · with Dr. Mao-Chang Liang</div>
+            <div class="timeline-desc">
+              CRDS-based water vapor and liquid water isotopic analysis; long-term precipitation and surface water reservoir isotope dynamics in Taiwan.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dates">2020 – 2022</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Postdoctoral Fellow</div>
+            <div class="timeline-place">Geosciences Division, Physical Research Laboratory (PRL), India · with Prof. R. D. Deshpande</div>
+            <div class="timeline-desc">
+              Established and maintained a state-of-the-art CRDS laboratory for water and vapor triple oxygen and hydrogen isotopes (&delta;<sup>18</sup>O, &Delta;<sup>17</sup>O, &delta;<sup>2</sup>H); evaluated Western Himalayan hydroclimate.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dates">2015 – 2020</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Graduate Research Fellow</div>
+            <div class="timeline-place">Indian Institute of Technology (IIT) Gandhinagar &amp; Physical Research Laboratory, India</div>
+            <div class="timeline-desc">
+              Doctoral research examining hydrometeorological processes across 41 isotope monitoring stations in India, integrating stable isotopes and atmospheric reanalysis.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dates">2020</div>
+          <div class="timeline-body">
+            <div class="timeline-title">Ph.D. in Earth Sciences</div>
+            <div class="timeline-place">Indian Institute of Technology Gandhinagar, India</div>
+            <div class="timeline-desc">
+              <em>Thesis:</em> Understanding hydrometeorological processes concerning Indian precipitation: insights from oxygen and hydrogen stable isotopes in conjunction with meteorological parameters (Advised by Prof. R. D. Deshpande).
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dates">2015</div>
+          <div class="timeline-body">
+            <div class="timeline-title">M.Sc. in Earth Sciences</div>
+            <div class="timeline-place">Sardar Patel University, Vallabh Vidyanagar, India</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dates">2013</div>
+          <div class="timeline-body">
+            <div class="timeline-title">B.Sc. in Chemistry</div>
+            <div class="timeline-place">Saurashtra University, Rajkot, India</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Publications -->
+    <section id="publications">
+      <div class="section-header">
+        <h2 class="section-title">Publications &amp; Preprints</h2>
+      </div>
+
+      <div class="pub-list">
+        
+        <!-- Preprints -->
+        <div class="pub-item">
+          <div class="pub-num">01</div>
+          <div class="pub-details">
+            <div class="pub-title">Equatorial Indian Ocean warming controls inland precipitation isotopes through a Gill-type atmospheric response</div>
+            <div class="pub-authors"><strong>Oza, H.</strong>, et al. (2026)</div>
+            <div class="pub-meta">
+              <em>Atmospheric Research</em>
+              <span class="badge highlight">First author</span>
+              <span class="badge">Under Review</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-num">02</div>
+          <div class="pub-details">
+            <div class="pub-title">Precipitation Isotopes Provide Early Warning of Atmospheric Reorganization Decades Before Extreme Event Intensification</div>
+            <div class="pub-authors"><strong>Oza, H.</strong>
